@@ -1,6 +1,10 @@
-amazon:
-  aws:
-    accesskey: ${AWS_ACCESS_KEY:accesskey}
-    secretkey: ${AWS_SECRET_KEY:secretkey}
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+aws:
+  region: ${AWS_DEFAULT_REGION:us-east-1}
+  accesskey: ${AWS_ACCESS_KEY:accesskey}
+  secretkey: ${AWS_SECRET_KEY:secretkey}
   dynamodb:
     endpoint: ${AWS_DYNAMODB_ENDPOINT:http://localhost:8000}
