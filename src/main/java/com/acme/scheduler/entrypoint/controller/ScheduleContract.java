@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RequestMapping("${ms.api.path.schedule:/api/v1/schedule}")
 public interface ScheduleContract {
@@ -15,15 +16,15 @@ public interface ScheduleContract {
     public Schedule createSchedule(@RequestBody @Valid ScheduleRequest request);
 
     @GetMapping
-    public Schedule getAllSchedules();
+    public List<Schedule> getAllSchedules();
 
     @GetMapping("/name/{name}")
-    public Schedule getScheduleByName(@PathVariable String name);
+    public List<Schedule> getScheduleByName(@PathVariable String name);
 
     @GetMapping("/phone/{phone}")
-    public Schedule getScheduleByPhone(@PathVariable String phone);
+    public List<Schedule> getScheduleByPhone(@PathVariable String phone);
 
     @GetMapping("/date/{date}")
-    public Schedule getScheduleByDate(@PathVariable LocalDateTime date);
+    public List<Schedule> getScheduleByDate(@PathVariable String date);
 
 }

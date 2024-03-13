@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class LocalDateTimeConverter implements DynamoDBTypeConverter<String, LocalDateTime> {
     @Override
     public String convert(LocalDateTime localDateTime) {
-        return localDateTime.toString();
+        return String.valueOf(localDateTime);
     }
 
     @Override
