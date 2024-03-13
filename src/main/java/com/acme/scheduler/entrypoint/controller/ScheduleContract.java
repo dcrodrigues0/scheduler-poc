@@ -4,29 +4,26 @@ package com.acme.scheduler.entrypoint.controller;
 import com.acme.scheduler.core.entities.Schedule;
 import com.acme.scheduler.dto.ScheduleRequest;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
 @RequestMapping("${ms.api.path.schedule:/api/v1/schedule}")
 public interface ScheduleContract {
 
-    @PostMapping("/")
-    public Schedule createSchedule(ScheduleRequest request);
+    @PostMapping
+    public Schedule createSchedule(@RequestBody @Valid ScheduleRequest request);
 
-    @GetMapping("/")
+    @GetMapping
     public Schedule getAllSchedules();
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public Schedule getScheduleByName(@PathVariable String name);
 
-    @GetMapping("/{phone}")
+    @GetMapping("/phone/{phone}")
     public Schedule getScheduleByPhone(@PathVariable String phone);
 
-    @GetMapping("/{date}")
+    @GetMapping("/date/{date}")
     public Schedule getScheduleByDate(@PathVariable LocalDateTime date);
 
 }
