@@ -3,6 +3,7 @@ package com.acme.scheduler.entrypoint.controller;
 
 import com.acme.scheduler.core.entities.Schedule;
 import com.acme.scheduler.dto.ScheduleRequest;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
 
-@RequestMapping("/v1/schedule")
+@RequestMapping("${ms.api.path.schedule:/api/v1/schedule}")
 public interface ScheduleContract {
 
     @PostMapping("/")

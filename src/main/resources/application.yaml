@@ -1,7 +1,3 @@
-spring:
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-
 aws:
   region: ${AWS_DEFAULT_REGION:us-east-1}
   accesskey: ${AWS_ACCESS_KEY:accesskey}
