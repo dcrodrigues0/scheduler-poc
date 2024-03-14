@@ -1,8 +1,6 @@
 package com.acme.scheduler.core.entities;
 
 import com.acme.scheduler.core.converter.LocalDateTimeConverter;
-import com.acme.scheduler.core.converter.ServiceTypeConverter;
-import com.acme.scheduler.core.enums.ServiceType;
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
 import java.time.LocalDateTime;
@@ -19,8 +17,7 @@ public class Schedule {
     @DynamoDBAttribute(attributeName = "phone")
     private String phone;
     @DynamoDBAttribute(attributeName = "serviceType")
-    @DynamoDBTypeConverted(converter = ServiceTypeConverter.class)
-    private ServiceType serviceType;
+    private String serviceType;
     @DynamoDBAttribute(attributeName = "date")
     @DynamoDBTypeConverted(converter = LocalDateTimeConverter.class)
     private LocalDateTime date;
@@ -28,7 +25,7 @@ public class Schedule {
     public Schedule() {
     }
 
-    public Schedule(String fullname, String phone, ServiceType serviceType, LocalDateTime date) {
+    public Schedule(String fullname, String phone, String serviceType, LocalDateTime date) {
         this.fullname = fullname;
         this.phone = phone;
         this.serviceType = serviceType;
@@ -47,7 +44,7 @@ public class Schedule {
         return phone;
     }
 
-    public ServiceType getServiceType() {
+    public String getServiceType() {
         return serviceType;
     }
 
@@ -67,7 +64,7 @@ public class Schedule {
         this.phone = phone;
     }
 
-    public void setServiceType(ServiceType serviceType) {
+    public void setServiceType(String serviceType) {
         this.serviceType = serviceType;
     }
 

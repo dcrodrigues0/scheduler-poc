@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GetAll {
+public class GetAllSchedule {
 
     private final ScheduleRepository scheduleRepository;
 
-    public GetAll(ScheduleRepository scheduleRepository) {
+    public GetAllSchedule(ScheduleRepository scheduleRepository) {
         this.scheduleRepository = scheduleRepository;
     }
 

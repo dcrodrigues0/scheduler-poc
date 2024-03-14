@@ -1,4 +1,4 @@
-package com.acme.scheduler.entrypoint.controller;
+package com.acme.scheduler.entrypoint.controller.schedule;
 
 
 import com.acme.scheduler.core.entities.Schedule;
@@ -26,5 +26,8 @@ public interface ScheduleContract {
 
     @GetMapping("/date/{date}")
     public List<Schedule> getScheduleByDate(@PathVariable String date);
+
+    @DeleteMapping("/id/{uuid}")
+    public Schedule deleteSchedule(@PathVariable String uuid);
 
 }

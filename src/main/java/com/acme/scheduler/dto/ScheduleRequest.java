@@ -1,6 +1,5 @@
 package com.acme.scheduler.dto;
 
-import com.acme.scheduler.core.enums.ServiceType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -18,12 +17,12 @@ public class ScheduleRequest {
     private String phone;
 
     @JsonProperty("serviceType")
-    private ServiceType serviceType;
+    private String serviceType;
 
     @JsonProperty("date")
     private LocalDateTime date;
 
-    public ScheduleRequest(String fullname, String phone, ServiceType serviceType, LocalDateTime date) {
+    public ScheduleRequest(String fullname, String phone, String serviceType, LocalDateTime date) {
         this.fullname = fullname;
         this.phone = phone;
         this.serviceType = serviceType;
@@ -38,7 +37,7 @@ public class ScheduleRequest {
         return phone;
     }
 
-    public ServiceType getServiceType() {
+    public String getServiceType() {
         return serviceType;
     }
 

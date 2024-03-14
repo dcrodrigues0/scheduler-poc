@@ -4,17 +4,16 @@ import com.acme.scheduler.core.dataProviders.repository.ScheduleRepository;
 import com.acme.scheduler.core.entities.Schedule;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class GetByPhone {
+public class CreateSchedule {
     private final ScheduleRepository scheduleRepository;
 
-    public GetByPhone(ScheduleRepository scheduleRepository) {
+    public CreateSchedule(ScheduleRepository scheduleRepository) {
         this.scheduleRepository = scheduleRepository;
     }
 
-    public List<Schedule> execute(String phone){
-        return scheduleRepository.findByPhone(phone);
+    public Schedule execute(Schedule schedule){
+        return scheduleRepository.save(schedule);
     }
+
 }

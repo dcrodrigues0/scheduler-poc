@@ -4,17 +4,18 @@ import com.acme.scheduler.core.dataProviders.repository.ScheduleRepository;
 import com.acme.scheduler.core.entities.Schedule;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class GetByName {
+public class GetScheduleByDate {
     private final ScheduleRepository scheduleRepository;
 
-    public GetByName(ScheduleRepository scheduleRepository) {
+    public GetScheduleByDate(ScheduleRepository scheduleRepository) {
         this.scheduleRepository = scheduleRepository;
     }
 
-    public List<Schedule> execute(String fullname){
-        return scheduleRepository.findByFullname(fullname);
+    public List<Schedule> execute(String date){
+        return scheduleRepository.findByDate(LocalDateTime.parse(date));
     }
 }
