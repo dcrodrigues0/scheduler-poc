@@ -6,6 +6,20 @@
 
 This project serves as a Proof of Concept (PoC) for a simple Schedule System integrated with DynamoDB, developed using Spring Boot. The system is designed to manage schedules for various services, storing availability data for each service in a DynamoDB table.
 
+## Database Model
+- ### Table Schedule
+| **Partition key**                 | fullname        | phone        | serviceType                | date          |
+| --------------------------------- | --------------- | ------------ | -------------------------- | ------------- |
+| PK (Auto generated random number) | Person fullname | Person phone | ID Reference Service table | Schedule date |
+
+- ### Table Service
+| **Partition key**                                                       | serviceName                                                              | availableDate                                                                                                                                                                                                      |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| PK (Auto generated random number)                                       | Is the service that will be scheduled ex: (Math class, Portuguese Class) | A map in format Map<String, List<String>> that contains the service available date as key and the available hours as values Ex: {"08/03/23":{"L":["18:00","19:00"]},"19/03/23":{"L":["08:00","19:00"]}}
+
+> Data model can be loaded in aws using cloud formation.
+
+
 # Integrate DynamoDB With Spring Boot
 
 # About Dependencies
@@ -228,8 +242,11 @@ public class CustomerRepository {
 }
 ```
 
-## Dynamo
-
 ## References
+[Robin Chen - Integrate AWS DynamoDB with Spring Boot](https://medium.com/@sudacgb/integrate-aws-dynamodb-with-spring-boot-dc62b9ceae96) (Ty Mr Robin)
+
 [Spring data DynamoDB Docs](https://github.com/derjust/spring-data-dynamodb?tab=readme-ov-file)
-[Robin Chen - Integrate AWS DynamoDB with Spring Boot](https://medium.com/@sudacgb/integrate-aws-dynamodb-with-spring-boot-dc62b9ceae96)
+
+
+### Disclaimer
+I know that there are a lot of features to implement in this PoC as log features, more robust logics inside services, unit tests and so on, but the goal here is a lightweight and simple PoC. Maybe in the future I can provide an upgrade. 
