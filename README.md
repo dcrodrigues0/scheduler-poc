@@ -17,7 +17,7 @@ This project serves as a Proof of Concept (PoC) for a simple Schedule System int
 | ----------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | PK (Auto generated random number)                                       | Is the service that will be scheduled ex: (Math class, Portuguese Class) | A map in format Map<String, List<String>> that contains the service available date as key and the available hours as values Ex: {"08/03/23":{"L":["18:00","19:00"]},"19/03/23":{"L":["08:00","19:00"]}}
 
-> Data model can be loaded in aws using cloud formation.
+> Data model can be loaded in aws using [Cloud formation](https://github.com/dcrodrigues0/scheduler-poc/tree/main/aws). 
 
 
 # Integrate DynamoDB With Spring Boot
