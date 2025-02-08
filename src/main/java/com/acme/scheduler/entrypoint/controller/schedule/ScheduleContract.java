@@ -6,7 +6,6 @@ import com.acme.scheduler.dto.ScheduleRequest;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RequestMapping("${ms.api.path.schedule:/api/v1/schedule}")
