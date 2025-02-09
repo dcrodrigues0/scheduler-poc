@@ -1,4 +1,3 @@
-# Todo Create tables
 resource "kubernetes_deployment" "dynamodb" {
   metadata {
     name      = "dynamodb"
@@ -57,5 +56,46 @@ resource "kubernetes_service" "dynamodb_service" {
       target_port = 8000
     }
     type = "ClusterIP"
+  }
+}
+
+# Todo adjust table creation on localdynamodb
+resource "aws_dynamodb_table" "schedule" {
+  depends_on = [kubernetes_service.dynamodb_service]
+
+  name           = "Schedule"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 1
+  write_capacity = 1
+
+  attribute {
+    name = "scheduleId"
+    type = "S"
+  }
+
+  hash_key = "scheduleId"
+
+  tags = {
+    Name = "Schedule"
+  }
+}
+
+resource "aws_dynamodb_table" "service" {
+  depends_on = [kubernetes_service.dynamodb_service]
+
+  name           = "Service"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 1
+  write_capacity = 1
+
+  attribute {
+    name = "UUID"
+    type = "S"
+  }
+
+  hash_key = "UUID"
+
+  tags = {
+    Name = "Service"
   }
 }
